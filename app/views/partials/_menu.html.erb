@@ -1,0 +1,14 @@
+<li><a href=""></a></li>
+<li><%= link_to 'Explorar', explore_path %></li>
+<li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">&#xE8B6;</i>Consulta de insectos.<i class="material-icons right">arrow_drop_down</i></a></li>
+<% if user_signed_in? %>
+  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>        
+<% else %>
+  <li>
+  <%= link_to(new_user_session_path) do %>
+    <i class="material-icons left">&#xE8D3;</i>Acceder
+  <%end%>
+  </li>
+<% end %>
+

@@ -1,0 +1,1 @@
+json.extract! @insect, :id, :created_at, :updated_at,:id,:nombre,:genero,:especie,:order_id,:family_id,:gender_id,:descripcion_biologica,:cover_file_name,:cover_content_type,:cover_file_size,:cover_updated_at,:cover

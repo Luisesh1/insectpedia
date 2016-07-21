@@ -1,0 +1,60 @@
+<div class="row" ng-controller="especies"> <!-- combos, boton y galeria> -->
+     
+    <div class="col s12 m3 l3"> <!-- combos y boton -->
+
+        <div class="row">
+           <div class="divider"></div>
+        </div>
+
+        <div class="browser-default col s12"> <!-- Orden -->
+            <label>Orden</label>
+            <select class="browser-default" ng-model="orden" ng-change="cargarFamilias(orden)">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option ng-repeat="orden in ordenes" value={{orden.id}}>{{orden.descripcion}}</option>
+            </select>
+        </div> <!-- Orden -->
+    
+        <div class="browser-default col s12"> <!-- Familia -->
+            <label>Familia</label>
+            <select class="browser-default" ng-model="familia" ng-change="cargarGeneros(familia)">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option ng-repeat="familia in familias" value={{familia.id}}>{{familia.descripcion}}</option>
+            </select>
+        </div> <!-- Familia -->
+    
+        <div class="browser-default col s12"> <!-- Género -->
+            <label>Género</label>
+            <select class="browser-default" ng-model="genero" ng-change="cargarEspecies(genero)">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option ng-repeat="genero in generos" value={{genero.id}}>{{genero.descripcion}}</option>
+            </select>
+        </div><!-- Género -->
+    
+        <div class="browser-default col s12"> <!-- Especie -->
+            <label>Especie</label>
+            <select class="browser-default" ng-model="especie" ng-change="cargarInsecto(especie)">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option ng-repeat="especie in especies" value={{especie.id}}>{{especie.especie}}</option>
+            </select>
+        </div><!-- Especie -->
+    
+        <div class="row">
+           <div class="divider"></div>
+        </div>
+            
+        <button class="btn waves-effect waves-light" type="submit" name="action">Buscar
+            <i class="material-icons right">send</i> 
+        </button>
+        
+    </div><!-- combos y boton -->
+        
+    <div class="col s12 m5 l5"><!-- imagen -->
+        <%=image_tag "insecto4k.jpg", class:"responsive-img"%>
+    </div><!-- imagen -->
+        
+    <div class="col s12 m4 l4"> <!-- texto -->
+        <p class="flow-text">Descripción biológica completa</p>
+    </div> <!-- texto -->
+    
+</div><!-- combos, boton, galeria y texto -->
+    

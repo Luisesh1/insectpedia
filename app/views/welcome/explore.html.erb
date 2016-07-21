@@ -1,0 +1,23 @@
+<div class="row">
+    <%@insects.each do |insect|%>
+        <div class="col s12 m4 l3">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <%=link_to insect.cover.url(:mediano) do%>
+                        <%=image_tag insect.cover, class:"responsive-img"%>
+                    <%end%>
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4"> <%=insect.order.descripcion%> <i class="material-icons right">more_vert</i></span>
+                    <p>  <%=link_to insect.especie,insect%> </p>
+                </div>
+                
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"> <%=insect.especie%> <i class="material-icons right">close</i></span>
+                    <p>Descripción breve sobre la especie</p>
+                </div>
+            </div>
+        </div>
+    <%end%>
+</div>
+<%= paginate @insects %>

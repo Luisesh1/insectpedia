@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="insectopedia">
+<head>
+  <title>Workspace</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <%= csrf_meta_tags %>
+  
+    <header>
+<!--************************************ EMPIEZA MENÚ********************************************************-->
+        <!-- Dropdown Structure -->
+
+<ul id="dropdown1" class="dropdown-content">
+  <li><%=link_to 'Region',region_path%></li>
+  <li><%=link_to 'Partes',partes_path%></li>
+  <li><%=link_to 'Especie',especie_path%></li>
+</ul>
+<nav>
+  <div class="nav-wrapper indigo darken-4">
+    <a href="<%=root_path%>" class="brand-logo" style="font-size: 28px; margin-left: 1%;"> <%=image_tag 'unam.png',width:"50", style:"margin-top: 1%; margin-left: 0%; float: left;"%> Universidad Nacional Autónoma de México</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+          <%=render 'partials/menu'%>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+          <%=render 'partials/menu'%>
+      </ul>
+      <a class="dropdown-button" href="#!" data-activates="dropdown1"></a>
+  </div>
+</nav>
+    </header>
+<!--******************************************************COMIENZA SLIDER**************************************************************************-->
+     
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
