@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Complex icons</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 99.9%;
+        width: 99.9%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+    
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,
+    center: {lat: 19.328365, lng: -99.186308}
+  });
+
+  setMarkers(map);
+}
+<%cont =0;%>
+var insectos = [
+<%if @insect.nil?%> 
+  <%[*@insects].each do |insect|%>
+    <%insect.ubications.each do |ubication|%>
+        <%cont+=1%>
+        ['Especie1', <%=ubication.latitud%>, <%=ubication.longitud%>,<%=cont%> ],
+    <%end%>
+  <%end%>
+    []
+  
+ <%end%>
+];
+insectos.pop();
+function setMarkers(map) {
+  
+  var mariquita = {
+    url: 'http://es.wikieducator.org/images/8/8d/MariquitaViva.png',};
+    
+    var mosca = {url: 'http://vignette4.wikia.nocookie.net/nonciclopedia/images/f/f5/Mosca1.gif/revision/latest/scale-to-width-down/40?cb=20090418113213'};
+    
+   var mariposa = {
+    url:'https://cdn4.iconfinder.com/data/icons/48x48-free-object-icons/48/Butterfly.png',};
+ 
+  for (var i = 2; i < insectos.length; i++) 
+  {
+    var insect = insectos[i];
+    var marker = new google.maps.Marker({
+      position: {lat: insect[1], lng: insect[2]},
+      map: map,
+      icon: mariquita,
+      title: insect[0],
+      zIndex: insect[3]
+    });
+    
+  }
+  var insect = insectos[0];
+    var marker = new google.maps.Marker({
+      position: {lat: insect[1], lng: insect[2]},
+      map: map,
+      icon: mariposa,
+      title: insect[0],
+      zIndex: insect[3]
+    });
+   
+    var insect = insectos[1];
+    var marker = new google.maps.Marker({
+      position: {lat: insect[1], lng: insect[2]},
+      map: map,
+      icon: mosca,
+      title: insect[0],
+      zIndex: insect[3]
+    });
+}
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpG5xkP7Kv2VO_qj53Wz2Ri_jV_BNq38k&signed_in=true&callback=initMap"></script>
+  </body>
+</html>

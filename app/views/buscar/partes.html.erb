@@ -1,10 +1,23 @@
-<div class="row" ng-controller="partes"> <!-- combos, boton y mapa> -->
-    <div class="col s12 m3 l3"> <!-- combos y boton -->
+<div class="row" ng-controller="partes"> <!-- combos, boton y galeria> -->
 
+    <div class="col s12 m3 l3"> <!-- combos y boton -->
+        
         <div class="row">
            <div class="divider"></div>
         </div>
-
+    
+        <div class="browser-default col s12"> <!-- Parte del insecto -->
+            <label>Parte del insecto</label>
+            <select class="browser-default" ng-model="partes.repeatSelect" >
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option ng-repeat="parte in partes" value={{parte.id}}>{{parte.descripcion}}</option>
+            </select>
+        </div> <!-- Parte del insecto -->
+        
+        <div class="row">
+           <div class="divider"></div>
+        </div>
+    
         <div class="browser-default col s12"> <!-- Orden -->
             <label>Orden</label>
             <select class="browser-default" ng-model="orden" ng-change="cargarFamilias(orden)">
@@ -36,109 +49,54 @@
                 <option ng-repeat="especie in especies" value={{especie.id}}>{{especie.especie}}</option>
             </select>
         </div><!-- Especie -->
-        
+    
+
         <div class="row">
            <div class="divider"></div>
         </div>
+        
+        <div class="browser-default col s12"> <!-- Estado -->
+            <label>Estado</label>
+            <select class="browser-default" ng-model="estado" ng-change="cargarMunicipios(estado)">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option ng-repeat="estado in estados" value={{estado.id}}>{{estado.descripcion}}</option>
+            </select>
+        </div><!-- Estado -->
+        
+        <div class="browser-default col s12"> <!-- Municipio -->
+            <label>Municipio</label>
+            <select class="browser-default" ng-model="municipio" ng-change="cargarBiomas(municipio)">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option ng-repeat="municipio in municipios" value={{municipio.id}}>{{municipio.descripcion}}</option>
+            </select>
+        </div><!-- Municipio -->
+        
+        <div class="browser-default col s12"> <!-- Bioma -->
+            <label>Bioma</label>
+            <select class="browser-default" ng-model="bioma" ng-change="cargarInsecto(bioma)">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option ng-repeat="bioma in biomas" value={{bioma.id}}>{{bioma.descripcion}}</option>
+            </select>
+        </div><!-- Bioma -->
+        
+        <div class="row">
+            <div class="divider"></div>
+        </div>    
+    
             
         <button class="btn waves-effect waves-light" type="submit" name="action">Buscar
-       <!-- <i class="material-icons right">send</i> -->
+            <i class="material-icons right">send</i>
         </button>
-        
-    </div><!-- combos y boton -->
-        
-    <div class="col s12 m5 l5"><!-- mapa -->
-       
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28978.801826452745!2d-107.40327080930098!3d24.78345821860575!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86bcd0bfb0f19665%3A0xd40820d409421835!2sCalle+R%C3%ADo+Nazas+1240%2C+Los+Pinos%2C+80128+Culiac%C3%A1n+Rosales%2C+Sin.!5e0!3m2!1ses-419!2smx!4v1468894169850" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-        
-    </div>
     
-</div><!-- combos, boton y mapa -->
-
-<div class="row"> <!-- combos, boton y mapa> -->
-    <div class="col s12 m3 l3"> <!-- combos y boton -->
-
-        <div class="row">
-           <div class="divider"></div>
+    </div><!-- combos y boton -->
+    
+    <div class="col s12 m5 l5"><!-- imagen -->
+        <h1>{{actual.especie}}</h1>
+        <img src="{{actual.root+actual.cover}}" class="responsive-img">
+        <div class="card-panel">
+            <p>{{actual.descripcion_biologica}}</p>
         </div>
-
-    <div class="input-field col s12">
-        <select>
-          <option value="" disabled selected>Elige una opción</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
-        <label>Bioma</label>
-    </div>
         
-    <div class="input-field col s12">
-        <select>
-            <option value="" disabled selected>Elige una opción</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-        </select>
-        <label>Estado</label>
-    </div>
-        
-    <div class="input-field col s12">
-        <select>
-            <option value="" disabled selected>Elige una opción</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-        </select>
-        <label>Municipio</label>
-    </div>
-        
+    </div><!-- imagen -->
     
-    <div class="row">
-       <div class="divider"></div>
-    </div>
-        
-  <button class="btn waves-effect waves-light" type="submit" name="action">Buscar
-   <!-- <i class="material-icons right">send</i> -->
-  </button>
-    
-    </div><!-- combos y boton -->
-    
-    <div class="col s12 m9 l9"><!-- tabla -->
-        <table class="highlight" class="responsive-table">
-            <thead>
-                <tr>
-                    <th data-field="especie">Especie</th>
-                    <th data-field="genero">Género</th>
-                    <th data-field="familia">Familia</th>
-                    <th data-field="orden">Orden</th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr>
-                    <td>especie</td>
-                    <td>genero</td>
-                    <td>familia</td>
-                    <td>orden</td>
-                </tr>
-                <tr>
-                    <td>especie</td>
-                    <td>genero</td>
-                    <td>familia</td>
-                    <td>orden</td>
-                </tr>
-
-                <tr>
-                    <td>especie</td>
-                    <td>genero</td>
-                    <td>familia</td>
-                    <td>orden</td>
-                </tr>
-            </tbody>
-        </table>
-      
-    </div> <!-- tabla -->
-            
-    
-</div><!-- combos, boton y tabla -->
-    
+</div><!-- combos, boton y galeria -->

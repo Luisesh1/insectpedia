@@ -13,5 +13,12 @@ ActiveAdmin.register Family do
 #   permitted
 # end
 permit_params :descripcion, :order_id
+form do |f|
+    f.inputs 'Familia' do
+        f.input :order,:label => 'Orden', as: :select, :collection => Order.all.map{|u| [u.descripcion, u.id]}
+        f.input :descripcion
+    end
+    
+end
 
 end

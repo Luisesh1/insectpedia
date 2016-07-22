@@ -13,16 +13,23 @@ ActiveAdmin.register Insect do
 #   permitted
 # end
 
-permit_params :id,:nombre,:genero,:especie,:order_id,:family_id,:gender_id,:descripcion_biologica,:cover,
-images_attributes: [:id,:insect_id,:nota,:cover,:_destroy],
-ubications_attributes: [:id,:insect_id,:altitud,:latitud,:_destroy]
-
+permit_params :id,:nombre,:genero,:especie,:order_id,:family_id,:gender_id,:descripcion_biologica,:cover,:modelo,
+images_attributes: [:id,:insect_id,:part_id,:nota,:cover,:_destroy],
+ubications_attributes: [:id,:insect_id,:longitud,:latitud,:_destroy]
+    index do
+      column :gender
+      column :especie
+      column :descripcion_biologica
+      actions
+    end
     form do |f|
       f.semantic_errors # shows errors on :base
-      f.input :especie
-      f.input :gender
-      f.input :cover, :as => :file
-      
+        f.inputs "Informacion del insecto" do
+        f.input :gender,:label => 'Genero', as: :select, :collection => Gender.all.map{|u| [u.descripcion, u.id]}
+        f.input :especie
+        f.input :descripcion_biologica
+        f.input :cover, :as => :file
+      end
        f.inputs "Extras" do
           f.has_many :images, heading: 'Imagenes', allow_destroy: true, new_record: true do |a|
             a.input :part_id ,:label => 'Parte del insecto', as: :select, :collection => Part.all.map{|u| [u.descripcion, u.id]}
@@ -34,10 +41,14 @@ ubications_attributes: [:id,:insect_id,:altitud,:latitud,:_destroy]
           f.has_many :ubications, heading: 'Ubicaciones', allow_destroy: true, new_record: true do |a|
             if !a.object.nil?
               a.input :latitud
-              a.input :altitud
+              a.input :longitud
             end
           end
         end
       f.actions
     end
+    form do |f|
+      render 'partials/model'
+    end
+    
 end

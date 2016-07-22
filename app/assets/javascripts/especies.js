@@ -1,13 +1,13 @@
-angular.module('insectopedia',[]).
+angular.module('insectopedia').
 controller("especies",['$scope','$http',function($scope,$http){
     $scope.actual;
-    $scope.jjjj="ssaxsxas";
     $scope.ordenes=[];
     $scope.familias=[];
     $scope.generos=[];
     $scope.especies=[];
     
-    $scope.cargarOrdenes=function(){
+   
+     $scope.cargarOrdenes=function(){
         $http.get('/orders.json').
         success(function(value){
              $scope.ordenes=value;
@@ -41,6 +41,7 @@ controller("especies",['$scope','$http',function($scope,$http){
             for (var xx=0;xx<value.length;xx++){
                 $scope.especies.push(value[xx]);    
              }
+              $('#mapa').attr('src', 'https://insectopedia-luisesh11.c9users.io/maps/show?genero_id='+val);
             console.log(value);
         });
     };
@@ -48,10 +49,12 @@ controller("especies",['$scope','$http',function($scope,$http){
         $http.get('/insects/'+val+'.json').
         success(function(value){
             $scope.actual=value;
+            $('#mapa').attr('src', 'https://insectopedia-luisesh11.c9users.io/maps/show?insecto_id='+val);
+
             console.log(value);
         });
     };
-    $scope.cargarPartes();
+   
     $scope.cargarOrdenes();
     
 }]);

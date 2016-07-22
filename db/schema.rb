@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718235340) do
+ActiveRecord::Schema.define(version: 20160722180505) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20160718235340) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.string   "modelo"
   end
 
   add_index "insects", ["family_id"], name: "index_insects_on_family_id"
@@ -136,11 +137,11 @@ ActiveRecord::Schema.define(version: 20160718235340) do
   add_index "states", ["biome_id"], name: "index_states_on_biome_id"
 
   create_table "ubications", force: :cascade do |t|
-    t.integer  "latitud"
-    t.integer  "altitud"
+    t.decimal  "latitud"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "insect_id"
+    t.decimal  "longitud"
   end
 
   add_index "ubications", ["insect_id"], name: "index_ubications_on_insect_id"

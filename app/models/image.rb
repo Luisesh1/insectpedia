@@ -3,4 +3,5 @@ class Image < ActiveRecord::Base
     validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
     belongs_to :insect
     belongs_to :part
+    
 end

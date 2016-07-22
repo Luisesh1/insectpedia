@@ -1,4 +1,14 @@
-<p id="notice"><%= notice %></p>
+<%=@insect.especie%>
+<%=image_tag @insect.cover.url%>
+<%=@insect.descripcion_biologica%>
 
-<%= link_to 'Edit', edit_insect_path(@insect) %> |
-<%= link_to 'Back', insects_path %>
+<%@insect.images.each do |imagen|%>
+    <%=image_tag imagen.cover.url%>
+    <h1><%=imagen.part.descripcion%></h1>
+<%end%>
+
+<%@insect.ubications.each do |ubicacion|%>
+    <%=ubicacion.latitud%>
+    <%=ubicacion.longitud%>
+<%end%>
+

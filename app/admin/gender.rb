@@ -14,4 +14,11 @@ ActiveAdmin.register Gender do
 # end
 
 permit_params :descripcion,:family_id
+form do |f|
+    f.inputs 'Genero' do
+        f.input :family,:label => 'Familia', as: :select, :collection => Family.all.map{|u| [u.descripcion, u.id]}
+        f.input :descripcion
+    end
+    
+end
 end

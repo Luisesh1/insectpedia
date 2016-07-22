@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'maps/add'
+
+  get 'maps/show'
+
   devise_for :users
   get 'buscar/partes',to:'buscar#partes',as: 'partes'
   get 'buscar/region',to:'buscar#region',as:'region'
