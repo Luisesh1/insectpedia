@@ -20,7 +20,7 @@ controller("regiones",['$scope','$http',function($scope,$http){
              for (var xx=0;xx<value.length;xx++){
                 $scope.familias.push(value[xx]);    
              }
-             
+              $('#mapa').attr('src', 'https://insectopedia-luisesh11.c9users.io/maps/show?orden_id='+val);
              console.log(value);
         });
     };
@@ -31,6 +31,7 @@ controller("regiones",['$scope','$http',function($scope,$http){
            for (var xx=0;xx<value.length;xx++){
                 $scope.generos.push(value[xx]);    
              }
+              $('#mapa').attr('src', 'https://insectopedia-luisesh11.c9users.io/maps/show?familia_id='+val);
              console.log(value);
         });
     };

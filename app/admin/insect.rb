@@ -47,8 +47,4 @@ ubications_attributes: [:id,:insect_id,:longitud,:latitud,:_destroy]
         end
       f.actions
     end
-    form do |f|
-      render 'partials/model'
-    end
-    
 end

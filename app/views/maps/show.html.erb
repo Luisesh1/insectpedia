@@ -22,7 +22,7 @@
     
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 17,
+    zoom: 5,
     center: {lat: 19.328365, lng: -99.186308}
   });
 
@@ -34,7 +34,7 @@ var insectos = [
   <%[*@insects].each do |insect|%>
     <%insect.ubications.each do |ubication|%>
         <%cont+=1%>
-        ['Especie1', <%=ubication.latitud%>, <%=ubication.longitud%>,<%=cont%> ],
+        ['<%=insect.especie%>', <%=ubication.latitud%>, <%=ubication.longitud%>,<%=cont%> ],
     <%end%>
   <%end%>
     []

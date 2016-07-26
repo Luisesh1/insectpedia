@@ -1,4 +1,4 @@
-<div class ng-controller="partes"> <!-- combos, galeria, texto y mapa> -->
+<div class ng-controller="regiones"> <!-- combos, galeria, texto y mapa> -->
 
     <div class="row"> <!-- combos y galeria> -->
          
@@ -47,23 +47,24 @@
         </div><!-- combos  -->
             
         <div class="col s12 m5 l5"><!-- imagen -->
-            {{actual.especie}}
+            <p class="flow-text">{{actual.especie}}</p>
             <img src="{{actual.root+actual.cover}}" class="responsive-img">
-            <div class="card-panel">
+            
+            <div class="card-panel" "col s12 m12 l12">
                 <div ng-repeat="parte in actual.imagenes">
                   <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 m4 l4">
                       <div class="card">
                         <div class="card-image">
                           <img src="{{actual.root+parte.cover}}">
-                          <span class="card-title">{{parte.parte}}</span>
+                         <!-- <span class="card-title">{{parte.parte}}</span>  -->
                         </div>
                         <div class="card-content">
-                          <p>{{parte.nota}}</p>
+                          <p>{{parte.parte}}</p>
                         </div>
-                        <div class="card-action">
-                          <a href="#">This is a link</a>
-                        </div>
+                         <!-- <div class="card-action">
+                          <a href="#">This is a link</a> 
+                        </div>  -->
                       </div>
                     </div>
                   </div>
@@ -74,17 +75,19 @@
         </div><!-- imagen -->
         
         <div class="col s12 m4 l4"> <!-- texto -->
-            <p class="flow-text">Descripción biológica completa</p>
-            <p>{{actual.descripcion_biologica}}</p>
+            <p class="flow-text">Descripción biológica </p>
+            <p class="flow-text">{{actual.descripcion_biologica}}</p>
         </div> <!-- texto -->
+        
+        <div class="col s12 m8 l8"><!-- mapa -->
+            <iframe id="mapa" src="https://insectopedia-luisesh11.c9users.io/maps/show" width="100%" height="400px"></iframe>
+        </div> <!--  mapa -->
         
     </div><!-- combos, galeria, texto > -->
     
-    <div class="row">
-        <div class="col s12 m5 l5"><!-- mapa -->
-            <iframe id="mapa" src="https://insectopedia-luisesh11.c9users.io/maps/show" width="100%" height="400px"></iframe>
-        </div> <!--  mapa -->
-    </div>
+   
+        
+    
     
 </div><!-- combos, galeria, texto y mapa> -->
     
