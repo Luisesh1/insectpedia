@@ -1,4 +1,4 @@
-<div class ng-controller="regiones"> <!-- combos, galeria, texto y mapa> -->
+<div ng-controller="especies"> <!-- combos, galeria, texto y mapa> -->
 
     <div class="row"> <!-- combos y galeria> -->
          
@@ -46,32 +46,40 @@
             
         </div><!-- combos  -->
             
+         <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            
+            <div class="modal-content">
+              <img src="" id="imagenModal" class="responsive-img"></img>
+            </div>
+            
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+            </div>
+            
+        </div>
+        
         <div class="col s12 m5 l5"><!-- imagen -->
+            
             <p class="flow-text">{{actual.especie}}</p>
             <img src="{{actual.root+actual.cover}}" class="responsive-img">
             
-            <div class="card-panel" "col s12 m12 l12">
+            <div class="card-panel col s12 m12 l12">
                 <div ng-repeat="parte in actual.imagenes">
-                  <div class="row">
                     <div class="col s12 m4 l4">
                       <div class="card">
                         <div class="card-image">
-                          <img src="{{actual.root+parte.cover}}">
-                         <!-- <span class="card-title">{{parte.parte}}</span>  -->
+                          <img src="{{actual.root+parte.cover}}" alt="imagen de parte de insecto" 
+                          class="responsive-img" onclick="escuchadores();">
                         </div>
                         <div class="card-content">
                           <p>{{parte.parte}}</p>
                         </div>
-                         <!-- <div class="card-action">
-                          <a href="#">This is a link</a> 
-                        </div>  -->
                       </div>
                     </div>
-                  </div>
                 </div>
-                    
-            
             </div>
+            
         </div><!-- imagen -->
         
         <div class="col s12 m4 l4"> <!-- texto -->
@@ -79,15 +87,24 @@
             <p class="flow-text">{{actual.descripcion_biologica}}</p>
         </div> <!-- texto -->
         
-        <div class="col s12 m8 l8"><!-- mapa -->
-            <iframe id="mapa" src="https://insectopedia-luisesh11.c9users.io/maps/show" width="100%" height="400px"></iframe>
-        </div> <!--  mapa -->
         
     </div><!-- combos, galeria, texto > -->
     
+        <div class="container" "center-align"><!-- mapa -->
+            <iframe id="mapa" src="https://insectopedia-luisesh11.c9users.io/maps/show" width="100%" height="400px"></iframe>
+        </div> <!--  mapa -->
    
-        
-    
     
 </div><!-- combos, galeria, texto y mapa> -->
+
+<script>
+   function escuchadores(){
+       console.log("ssss");
+         $("img").click(function(event) {
+            console.log("ggo");
+            $("#imagenModal").attr("src",$(this).attr("src"));
+             $('#modal1').openModal();   
+        });
+   }
+</script>
     

@@ -22,7 +22,7 @@
     
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 5,
+    zoom: 6,
     center: {lat: 19.328365, lng: -99.186308}
   });
 
@@ -44,13 +44,13 @@ var insectos = [
 insectos.pop();
 function setMarkers(map) {
   
-  var mariquita = {
-    url: 'http://es.wikieducator.org/images/8/8d/MariquitaViva.png',};
+  //var mariquita = {
+    //url: 'http://es.wikieducator.org/images/8/8d/MariquitaViva.png',};
     
-    var mosca = {url: 'http://vignette4.wikia.nocookie.net/nonciclopedia/images/f/f5/Mosca1.gif/revision/latest/scale-to-width-down/40?cb=20090418113213'};
+    //var mosca = {url: 'http://vignette4.wikia.nocookie.net/nonciclopedia/images/f/f5/Mosca1.gif/revision/latest/scale-to-width-down/40?cb=20090418113213'};
     
-   var mariposa = {
-    url:'https://cdn4.iconfinder.com/data/icons/48x48-free-object-icons/48/Butterfly.png',};
+   //var mariposa = {
+    //url:'https://cdn4.iconfinder.com/data/icons/48x48-free-object-icons/48/Butterfly.png',};
  
   for (var i = 2; i < insectos.length; i++) 
   {
@@ -58,7 +58,7 @@ function setMarkers(map) {
     var marker = new google.maps.Marker({
       position: {lat: insect[1], lng: insect[2]},
       map: map,
-      icon: mariquita,
+      //icon: mariquita,
       title: insect[0],
       zIndex: insect[3]
     });
@@ -68,7 +68,7 @@ function setMarkers(map) {
     var marker = new google.maps.Marker({
       position: {lat: insect[1], lng: insect[2]},
       map: map,
-      icon: mariposa,
+      //icon: mariposa,
       title: insect[0],
       zIndex: insect[3]
     });
@@ -77,7 +77,7 @@ function setMarkers(map) {
     var marker = new google.maps.Marker({
       position: {lat: insect[1], lng: insect[2]},
       map: map,
-      icon: mosca,
+    //  icon: mosca,
       title: insect[0],
       zIndex: insect[3]
     });

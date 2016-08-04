@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Biomes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @biomes.each do |biome| %>
+      <tr>
+        <td><%= link_to 'Show', biome %></td>
+        <td><%= link_to 'Edit', edit_biome_path(biome) %></td>
+        <td><%= link_to 'Destroy', biome, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Biome', new_biome_path %>

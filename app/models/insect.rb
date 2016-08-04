@@ -3,10 +3,11 @@ class Insect < ActiveRecord::Base
     validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
     belongs_to :gender
     has_many :images
+    has_many :biome_insects
+    has_many :biomes, :through => :biome_insects
     has_many :parts, :through => :images
     has_many :ubications
-    
-    validates :gender_id,:especie,:descripcion_biologica,presence:true
-    accepts_nested_attributes_for :images,:ubications, :allow_destroy => true
+    validates :gender_id,:especie,:descripcion_biologica,:cover,presence:true
+    accepts_nested_attributes_for :images,:ubications,:biomes,:biome_insects,:allow_destroy => true
     
 end

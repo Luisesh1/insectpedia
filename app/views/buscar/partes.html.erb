@@ -8,7 +8,7 @@
     
         <div class="browser-default col s12"> <!-- Parte del insecto -->
             <label>Parte del insecto</label>
-            <select class="browser-default" ng-model="partes.repeatSelect" >
+            <select class="browser-default" ng-model="parte" ng-change="cargarRespuesta()">
                 <option value="" disabled selected>Seleccione una opción</option>
                 <option ng-repeat="parte in partes" value={{parte.id}}>{{parte.descripcion}}</option>
             </select>
@@ -83,20 +83,44 @@
             <div class="divider"></div>
         </div>    
     
-            
-        <button class="btn waves-effect waves-light" type="submit" name="action">Buscar
-            <i class="material-icons right">send</i>
-        </button>
-    
-    </div><!-- combos y boton -->
-    
-    <div class="col s12 m5 l5"><!-- imagen -->
-        <h1>{{actual.especie}}</h1>
-        <img src="{{actual.root+actual.cover}}" class="responsive-img">
-        <div class="card-panel">
-            <p>{{actual.descripcion_biologica}}</p>
+    </div><!-- combos y boton-->
+  
+      <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        
+        <div class="modal-content">
+          <img src="" id="imagenModal" class="responsive-img"></img>
         </div>
         
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        </div>
+        
+    </div>
+    
+    
+    <div class="col s12 m8 l8"><!-- imagen -->
+        <div ng-repeat="p in partesReq">
+            <div class="col s12 m6 l3 card-panel">
+                <img src="{{p.cover}}" alt="imagen de parte de insecto" class="responsive-img" onclick="escuchadores();"></img>
+                <h3 class="flow-text">{{p.familia}}</h3>
+                <h3 class="flow-text">{{p.especie}}</h3>
+                <p class="flow-text">{{p.parte}}</p>
+            </div>
+        </div>
     </div><!-- imagen -->
     
+  
+    
 </div><!-- combos, boton y galeria -->
+
+<script>
+   function escuchadores(){
+       console.log("ssss");
+         $("img").click(function(event) {
+            console.log("ggo");
+            $("#imagenModal").attr("src",$(this).attr("src"));
+             $('#modal1').openModal();   
+        });
+   }
+</script>

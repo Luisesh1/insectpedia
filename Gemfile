@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #personalizadas=========================
  gem 'materialize-sass'
- gem 'activeadmin', github: 'gregbell/active_admin'
+ gem 'activeadmin', '~> 1.0.0.pre4'
  gem 'devise'
   gem "cancan"
   gem 'paperclip'

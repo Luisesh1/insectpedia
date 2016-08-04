@@ -10,11 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
 //= require jquery
 //= require materialize-sprockets
 //= require jquery_ujs
 //= require_tree .
-
  $(document).ready(function() {
     $('select').material_select();
       $('.slider').slider({full_width: true});
@@ -22,6 +23,6 @@
       $('.materialboxed').materialbox();
       $(".button-collapse").sideNav();
       $(".dropdown-button").dropdown();
-      
+      $('.modal-trigger').leanModal();
   });
   

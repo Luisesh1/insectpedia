@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'buscar/prueba'
+
   get 'maps/add'
 
   get 'maps/show'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   resources :genders
   resources :orders
   resources :families
+  resources :biomes
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

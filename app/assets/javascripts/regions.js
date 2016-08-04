@@ -5,8 +5,23 @@ controller("regiones",['$scope','$http',function($scope,$http){
     $scope.familias=[];
     $scope.generos=[];
     $scope.especies=[];
-    
-   
+    $scope.biomas=[];
+    $scope.estados=[];
+    $scope.municipios=[];
+    $scope.cargarRespuesta= function(){
+        url = '/maps/show?'
+        if ($scope.bioma!="" && $scope.bioma!=null)
+            url=url+'&bioma_id='+$scope.bioma;
+        if ($scope.orden!="" && $scope.orden!=null)
+            url=url+'&orden_id='+$scope.orden;
+        if ($scope.familia!="" && $scope.familia!=null)
+            url=url+'&familia_id='+$scope.familia;
+        if ($scope.genero!="" && $scope.genero!=null)
+            url=url+'&genero_id='+$scope.genero;
+         if ($scope.especie!="" && $scope.especie!=null)
+            url=url+'&especie_id='+$scope.especie;
+         $('#mapa').attr('src', url);
+    };
      $scope.cargarOrdenes=function(){
         $http.get('/orders.json').
         success(function(value){
@@ -20,7 +35,8 @@ controller("regiones",['$scope','$http',function($scope,$http){
              for (var xx=0;xx<value.length;xx++){
                 $scope.familias.push(value[xx]);    
              }
-              $('#mapa').attr('src', 'https://insectopedia-luisesh11.c9users.io/maps/show?orden_id='+val);
+             
+              $scope.cargarRespuesta();
              console.log(value);
         });
     };
@@ -75,17 +91,19 @@ controller("regiones",['$scope','$http',function($scope,$http){
              }
              console.log(value);
         });
-    }; $scope.cargarBiomas=function(val){
-        $http.get('/biomes/'+val+'.json').
+    }; $scope.cargarBiomas=function(){
+        $http.get('/biomes.json').
         success(function(value){
              $scope.biomas=[];
            for (var xx=0;xx<value.length;xx++){
                 $scope.biomas.push(value[xx]);    
              }
+              $('#mapa').attr('src', 'https://insectopedia-luisesh11.c9users.io/maps/show?bioma_id='+val);
              console.log(value);
         });
     };
    
     $scope.cargarOrdenes();
+    $scope.cargarBiomas();
     
 }]);

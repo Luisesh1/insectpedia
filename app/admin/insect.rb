@@ -14,8 +14,9 @@ ActiveAdmin.register Insect do
 # end
 
 permit_params :id,:nombre,:genero,:especie,:order_id,:family_id,:gender_id,:descripcion_biologica,:cover,:modelo,
-images_attributes: [:id,:insect_id,:part_id,:nota,:cover,:_destroy],
-ubications_attributes: [:id,:insect_id,:longitud,:latitud,:_destroy]
+images_attributes: [:id,:insect_id,:part_id,:nota,:cover, :_destroy, :_create, :_update],
+ubications_attributes: [:id,:insect_id,:longitud,:latitud, :_destroy, :_create, :_update],
+biome_insects_attributes: [:id,:insect_id,:biome_id, :_destroy, :_create, :_update]
     index do
       column :gender
       column :especie
@@ -31,7 +32,7 @@ ubications_attributes: [:id,:insect_id,:longitud,:latitud,:_destroy]
         f.input :cover, :as => :file
       end
        f.inputs "Extras" do
-          f.has_many :images, heading: 'Imagenes', allow_destroy: true, new_record: true do |a|
+          f.has_many :images, heading: 'Imagenes',new_record: true, allow_destroy: true do |a|
             a.input :part_id ,:label => 'Parte del insecto', as: :select, :collection => Part.all.map{|u| [u.descripcion, u.id]}
             a.input :nota
             a.input :cover, :as => :file, :hint => a.template.image_tag(a.object.cover.url(:mediano))
@@ -45,6 +46,15 @@ ubications_attributes: [:id,:insect_id,:longitud,:latitud,:_destroy]
             end
           end
         end
+        f.inputs "Biomas" do
+          f.has_many :biome_insects, heading: 'Bioma', allow_destroy: true, new_record: true do |a|
+            if !a.object.nil?
+              a.input :biome_id ,:label => 'bioma', as: :select, :collection => Biome.all.map{|u| [u.descripcion, u.id]}
+            end
+          end
+        end
+        render "partials/mapas", layout: "active_admin"
+        
       f.actions
     end
 end

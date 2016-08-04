@@ -47,7 +47,7 @@
             
         </div><!-- combos -->
             
-        <div class="col s12 m8 l8"><!-- mapa -->
+        <div class="col s12 m8 l8" ><!-- mapa -->
             <iframe id="mapa" src="https://insectopedia-luisesh11.c9users.io/maps/show" width="100%" height="400px"></iframe>
         
             
@@ -73,7 +73,7 @@
         
         <div class="browser-default col s12"> <!-- Municipio -->
             <label>Municipio</label>
-            <select class="browser-default" ng-model="municipio" ng-change="cargarBiomas(municipio)">
+            <select class="browser-default" ng-model="municipio" ng-change="cargarInsecto(municipio)">
                 <option value="" disabled selected>Seleccione una opción</option>
                 <option ng-repeat="municipio in municipios" value={{municipio.id}}>{{municipio.descripcion}}</option>
             </select>
@@ -81,7 +81,7 @@
         
         <div class="browser-default col s12"> <!-- Bioma -->
             <label>Bioma</label>
-            <select class="browser-default" ng-model="bioma" ng-change="cargarInsecto(bioma)">
+            <select class="browser-default" ng-model="bioma" ng-change="cargarRespuesta()">
                 <option value="" disabled selected>Seleccione una opción</option>
                 <option ng-repeat="bioma in biomas" value={{bioma.id}}>{{bioma.descripcion}}</option>
             </select>
